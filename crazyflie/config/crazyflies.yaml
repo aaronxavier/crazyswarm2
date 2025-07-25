@@ -1,8 +1,22 @@
 # named list of all robots
 robots:
   cf176:
-    enabled: false
+    enabled: true
     uri: radio://0/80/1M/E7E7E7E7B0
+    initial_position: [-1.0, 0.0, 0.0]
+    type: cfbl  # see robot_types
+    # firmware_params:
+    #   kalman:
+    #     pNAcc_xy: 1.0 # default 0.5
+    # firmware_logging:
+    #   enabled: true
+    #   custom_topics:
+    #     topic_name3: 
+    #       frequency: 1
+    #       vars: ["acc.x", "acc.y"]
+  cf177:
+    enabled: true
+    uri: radio://0/80/1M/E7E7E7E7B1
     initial_position: [0.0, 0.0, 0.0]
     type: cfbl  # see robot_types
     # firmware_params:
@@ -28,9 +42,23 @@ robots:
     #     topic_name3: 
     #       frequency: 1
     #       vars: ["acc.x", "acc.y"]
+  cf179:
+    enabled: true
+    uri: radio://0/80/1M/E7E7E7E7B4
+    initial_position: [0.0, 0.0, 0.0]
+    type: cfbl  # see robot_types
+    # firmware_params:
+    #   kalman:
+    #     pNAcc_xy: 1.0 # default 0.5
+    # firmware_logging:
+    #   enabled: true
+    #   custom_topics:
+    #     topic_name3: 
+    #       frequency: 1
+    #       vars: ["acc.x", "acc.y"]
   cf180:
     enabled: true
-    uri: radio://0/83/1M/E7E7E7E7B4
+    uri: radio://0/80/1M/E7E7E7E7B4
     initial_position: [0.0, 0.0, 0.0]
     type: cfbl  # see robot_types
     # firmware_params:
@@ -72,11 +100,12 @@ robots:
 
 # Definition of the various robot types
 robot_types:
-   cfbl:
+  cfbl:
     motion_capture:
       enabled: true
       # only if enabled; see motion_capture.yaml
-      marker: default_single_marker  
+      tracking: vendor
+      marker: default
       dynamics: default
     big_quad: false
     battery:
@@ -103,7 +132,7 @@ robot_types:
     #    topic_name3: 
     #      frequency: 1
     #      vars: ["acc.x", "acc.y", "acc.z"]
-   cf21:
+  cf21:
     motion_capture:
       enabled: true
       # only if enabled; see motion_capture.yaml
@@ -126,17 +155,16 @@ robot_types:
     #      frequency: 1
     #      vars: ["acc.x", "acc.y", "acc.z"]
 
-  
 cf21_mocap_deck:
-    motion_capture:
-      enabled: true
+  motion_capture:
+    enabled: true
       # only if enabled; see motion_capture.yaml
-      marker: mocap_deck
-      dynamics: default
-    big_quad: false
-    battery:
-      voltage_warning: 3.8  # V
-      voltage_critical: 3.7 # V
+    marker: mocap_deck
+    dynamics: default
+  big_quad: false
+  battery:
+    voltage_warning: 3.8    # V
+    voltage_critical: 3.7   # V
 
     # firmware_params:
     #   kalman:
